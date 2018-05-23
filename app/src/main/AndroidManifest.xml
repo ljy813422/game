@@ -26,6 +26,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:name=".test.TestActivity" />
+			
     </application>
 
 </manifest>

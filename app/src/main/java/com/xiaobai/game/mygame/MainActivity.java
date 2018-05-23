@@ -1,11 +1,19 @@
 package com.xiaobai.game.mygame;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
+import com.xiaobai.game.mygame.http.NetWork;
+import com.xiaobai.game.mygame.test.TestActivity;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login:
+                //
+                startActivity(new Intent(this, TestActivity.class));
+                finish();
                 break;
             case R.id.exit:
                 exit();
@@ -31,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
 
     private void exit() {
         if (alertDialog == null) {

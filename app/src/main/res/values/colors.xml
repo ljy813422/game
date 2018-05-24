@@ -8,4 +8,6 @@
     <color name="gray_text_color">#999999</color>
     <color name="light_dark_text_color">#666666</color>
     <color name="dark_text_color">#333333</color>
+    <color name="half_gray_transparent">#77ffffff</color>
+
 </resources>

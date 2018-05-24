@@ -14,22 +14,35 @@
      android:layout_weight="1"
      android:scrollbars="none">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/up_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:background="#33ffffff"
-                android:text="login"
-                android:textColor="#aaffffff" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/up_rl_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#33ffffff"
+                    android:text="login"
+                    android:textColor="#aaffffff" />
+
+            </RelativeLayout>
+            <View
+                android:id="@+id/up_place_holder_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
  </ScrollView>
 
@@ -46,11 +59,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <View
+                android:id="@+id/place_holder_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <Button
                 android:id="@+id/exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/place_holder_view"
                 android:layout_marginTop="10dp"
                 android:background="#33ffffff"
                 android:text="exit"

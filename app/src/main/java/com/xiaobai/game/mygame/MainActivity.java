@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import com.xiaobai.game.mygame.test.TestActivity;
+import com.xiaobai.game.mygame.util.DialogUtil;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AlertDialog alertDialog;
@@ -30,17 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.exit:
-                exit();
+                //exit();
+                DialogUtil.exit(this);
                 break;
         }
 
     }
 
-
+    /**
+     * 提出去
+     */
     private void exit() {
         if (alertDialog == null) {
-
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setTitle(getResources().getString(R.string.exit))
@@ -70,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(keyCode ==KeyEvent.KEYCODE_BACK){
-            exit();
+           // exit();
+            DialogUtil.exit(this);
         }
         return super.onKeyDown(keyCode, event);
     }

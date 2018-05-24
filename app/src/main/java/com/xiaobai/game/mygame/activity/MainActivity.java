@@ -21,11 +21,6 @@ import com.xiaobai.game.mygame.test.TestActivity;
 import com.xiaobai.game.mygame.util.DialogUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-<<<<<<< .mine
-
-=======
-
->>>>>>> .theirs
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.up_container)
@@ -165,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
+        if(keyCode == KeyEvent.KEYCODE_BACK){
            // exit();
             DialogUtil.exit(this);
         }

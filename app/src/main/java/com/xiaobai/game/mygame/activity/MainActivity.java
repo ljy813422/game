@@ -55,9 +55,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.exit).setOnClickListener(this);
 
+
+
+    }
+
+    /**
+     *
+     */
+    private void initLogin(){
         dm = getResources().getDisplayMetrics();
-
-
         Log.d("MainActivity", "" + dm.heightPixels + "-----" + dm.widthPixels);
         upContainer.getLayoutParams().height = dm.heightPixels;
         downContainer.getLayoutParams().height = dm.heightPixels;
@@ -78,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
-
     }
+
 
 
     @Override

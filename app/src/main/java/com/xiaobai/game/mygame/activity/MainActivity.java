@@ -5,23 +5,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.xiaobai.game.mygame.R;
+import com.xiaobai.game.mygame.fragment.MainGameFragment;
 import com.xiaobai.game.mygame.test.TestActivity;
 import com.xiaobai.game.mygame.util.DialogUtil;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.up_container)
     LinearLayout upContainer;
@@ -37,12 +40,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     View upPlaceHolderView;
     @BindView(R.id.up_rl_container)
     RelativeLayout upRlContainer;
+    @BindView(R.id.frame_container)
+    FrameLayout frameContainer;
 
     private AlertDialog alertDialog;
     private DisplayMetrics dm;
     //是否显示 login
     private boolean isLogin = true;
     private ValueAnimator comeAnimator;
+    private MainGameFragment gameFragment;
 
 
     @Override
@@ -55,14 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.exit).setOnClickListener(this);
 
-
-
+        initLogin();
     }
 
     /**
      *
      */
-    private void initLogin(){
+    private void initLogin() {
         dm = getResources().getDisplayMetrics();
         Log.d("MainActivity", "" + dm.heightPixels + "-----" + dm.widthPixels);
         upContainer.getLayoutParams().height = dm.heightPixels;
@@ -85,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
 
 
     @Override
@@ -123,8 +127,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.login:
                 //
-                startActivity(new Intent(this, TestActivity.class));
-                finish();
+//                startActivity(new Intent(this, TestActivity.class));
+//                finish();
+                frameContainer.setVisibility(View.VISIBLE);
+                if (gameFragment == null) {
+                    gameFragment = new MainGameFragment();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame_container,gameFragment).commit();
+                }
+
+
                 break;
             case R.id.exit:
                 //exit();
@@ -166,8 +177,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-           // exit();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // exit();
             DialogUtil.exit(this);
         }
         return super.onKeyDown(keyCode, event);
